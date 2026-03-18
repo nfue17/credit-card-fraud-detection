@@ -1,39 +1,79 @@
-# credit-card-fraud-detection
-CRISP-DM based data science project for detecting fraudulent credit card transactions using machine learning
+# Credit Card Fraud Detection
 
-## Project Overview
-This project explores how machine learning can be used to detect fraudulent credit card transactions using the CRISP-DM methodology.
+This project focuses on detecting fraudulent credit card transactions using machine learning classification techniques. The dataset is highly imbalanced, making this a realistic and challenging problem in applied data science.
 
-## Business Problem
-Credit card fraud causes financial losses and reduces customer trust. The goal is to identify suspicious transactions as early as possible.
+## Objective
+The goal of this project is to build and evaluate a classification model that can accurately identify fraudulent transactions while minimizing false negatives (missed fraud cases).
 
-## Data Question
-Can we build a machine learning model that accurately predicts whether a credit card transaction is fraudulent based on transaction data?
+## Dataset
+The dataset used in this project is publicly available on Kaggle:
 
-## Analytic Approach
-The project follows a supervised machine learning classification approach. Historical transaction data would be explored, cleaned, prepared, and used to train models such as Logistic Regression, Decision Trees, Random Forest, and Gradient Boosting.
+https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
 
-## Data Requirements
-The project would require transaction data, customer behavior data, device/channel information, and labeled fraud/non-fraud outcomes.
+Due to licensing and size considerations, the dataset is not included in this repository.
 
-## Data Collection Plan
-Data could be collected from internal financial transaction systems, fraud investigation records, and external enrichment sources. Public datasets may also be used for experimentation.
+## Tools & Technologies
+- Python  
+- Jupyter Notebook  
+- pandas  
+- numpy  
+- matplotlib  
+- scikit-learn  
 
-## Data Understanding and Preparation
-The dataset would be explored using summary statistics and visualizations. Missing values, duplicates, inconsistencies, and class imbalance would be addressed before modeling.
+## Project Workflow
+1. Data loading and initial inspection  
+2. Data cleaning and preprocessing  
+3. Exploratory Data Analysis (EDA)  
+4. Feature engineering (log transformation of transaction amount)  
+5. Handling class imbalance using class weighting  
+6. Model training using Logistic Regression  
+7. Threshold tuning for classification  
+8. Model evaluation using multiple metrics  
 
-## Modeling Approach
-The problem is treated as a supervised classification task. Multiple models would be tested and compared, with special attention to recall, precision, and F1-score.
+## Key Concepts
+This project highlights important concepts in fraud detection:
 
-## Evaluation
-Model performance would be evaluated using precision, recall, F1-score, confusion matrix, and cross-validation. Business value would also be considered.
+- Imbalanced datasets  
+- Classification modeling  
+- Confusion matrix analysis  
+- Precision and recall trade-off  
+- F1-score evaluation  
+- ROC curve and AUC  
+- Threshold tuning  
 
-## Tools
-- Python
-- Pandas
-- Scikit-learn
-- Jupyter Notebook
-- GitHub
+## Model Evaluation
 
-## Status
-Concept project completed as part of a Data Science Methodology assignment. Future improvement: implement the project with a real dataset and notebook.
+### ROC Curve
+
+The model achieved an AUC score of approximately **0.97**, indicating a strong ability to distinguish between fraudulent and legitimate transactions.
+
+![ROC Curve](images/roc_curve.png)
+
+This demonstrates that the model performs very well in ranking transactions by their likelihood of being fraud.
+
+### Interpretation
+
+While the model achieves excellent discrimination performance (high AUC), practical fraud detection requires balancing recall and precision.
+
+The model was optimized to increase recall (detect as many fraudulent transactions as possible), which led to a lower precision due to an increase in false positives.
+
+This reflects a real-world trade-off in fraud detection systems, where missing fraudulent transactions is often more costly than incorrectly flagging legitimate ones.
+
+## Results
+- High recall for fraud detection (most fraudulent transactions are identified)  
+- Lower precision due to false positives  
+- Strong overall classification performance (AUC ≈ 0.97)  
+- Demonstrates effective handling of imbalanced data  
+
+## Repository Structure
+- `credit_card_fraud_detection.ipynb` → main notebook  
+- `README.md` → project documentation  
+- `images/` → visualizations and plots  
+
+## How to Run
+1. Clone this repository  
+2. Download the dataset from Kaggle  
+3. Place the dataset in your working directory  
+4. Install dependencies:
+```bash
+pip install pandas numpy matplotlib scikit-learn
